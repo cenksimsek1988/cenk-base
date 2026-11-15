@@ -1,0 +1,14 @@
+{
+  "name": "cenk-base",
+  "description": "The cenk-base plugin, shared from this folder: for a clone you work on. Everyone else gets it with a cenk-* plugin from Cenk Simsek's public catalog cenk (github.com/cenksimsek1988/claude-plugins).",
+  "owner": { "name": "Cenk Simsek" },
+  "plugins": [
+    {
+      "name": "cenk-base",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "The shared base of the cenk-* plugins: one profile with your own facts and settings, in one cenk folder in your Google Drive or on your computer.",
+      "category": "productivity"
+    }
+  ]
+}
