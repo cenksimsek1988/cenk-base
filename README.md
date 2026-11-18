@@ -44,4 +44,6 @@ A plugin builds on it by declaring it in `dependencies` in its `plugin.json`:
 
 The start-up hook puts `CENK_BASE=<this plugin's folder>` into each session's environment, so a script run from the Bash tool can call `python -I "$CENK_BASE/lib/profile.py" get person.name`, or load it as a module by its path (see the top of [lib/profile.py](lib/profile.py)). Only Bash tool commands get `CENK_BASE`: not PowerShell tool commands on Windows, and not other hooks. A script that finds it missing says so plainly and names the cause: cenk-base not installed or enabled, its start-up hook failed (Claude Code shows no error for that), or a session started before it was; the fix is `claude plugin install <plugin>@<marketplace>` and a new session. Tests: `sh tests/run.sh`.
 
+`references/coordinator.md` is the shared coordinator rules: a synced copy of the workbench file, made by the workbench's `scripts/sync-shared.sh` (never edit it here). cenk-* coordinator skills read it via `$CENK_BASE/references/coordinator.md`.
+
 Privacy: [PRIVACY.md](PRIVACY.md). License: MIT.
