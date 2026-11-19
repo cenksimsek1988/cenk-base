@@ -16,7 +16,10 @@ Read first by every coordinator skill (the workbench's `coordinate-sessions`, ce
 
 ## Briefs and sessions
 
-- The coordinator does none of the work itself: it briefs one session per piece, records the results and decides with the person. A long run inside the coordinator costs its whole context on every turn: a heavy piece runs in a fresh session.
+- The coordinator never runs long work itself, so it stays free for messages: delivery gives up after about 20 s when a busy session does not answer. Example: on 19 Nov, an hour of page checks run for a peer made 8 messages from another session fail.
+- Every long piece goes to a fresh session with a brief: test suites, searches, workflows, analyses, review or verify rounds, and work a peer asks for. Example: a peer asks for page checks: start a session for them.
+- No long command runs in the coordinator, in the foreground or the background. Its own checks before landing go to a fresh session, which runs them on the exact commit and reports pass or fail with counts; the coordinator acts on that report. Example: `a1b2c3d: 467 passed, 0 failed, 2 skipped; check-plugin all PASS.`
+- The coordinator briefs, records the results, relays answers and decides with the person.
 - A brief stands alone: the goal, the items by name and id, the files, the rules to read, and the hand-off the session ends with.
 - A session can be started only on a turn the person's own message started; on a turn another session's message or a trigger started, propose it as a card the person starts.
 - Idle is not done: a session shows idle while it waits on a background job or the person. Read its last turn before reminding it.

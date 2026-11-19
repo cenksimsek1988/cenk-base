@@ -6,7 +6,7 @@
     {
       "name": "cenk-base",
       "source": "./",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "description": "The shared base of the cenk-* plugins: one profile with your own facts and settings, in one cenk folder in your Google Drive or on your computer.",
       "category": "productivity"
     }

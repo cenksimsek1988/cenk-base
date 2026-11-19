@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 (2026-11-19)
+
+- Coordinator rules: never run long work; pre-landing checks in a fresh session (`references/coordinator.md` synced from workbench 0.34.1).
+
 ## 0.2.0 (2026-11-18)
 
 - `references/coordinator.md`: the shared coordinator rules, a synced copy of the workbench file, for the cenk-* coordinator skills to read via `$CENK_BASE/references/coordinator.md`. Not a skill: nothing loads it on its own.
