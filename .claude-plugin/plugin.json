@@ -1,6 +1,6 @@
 {
   "name": "cenk-base",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "The shared base of the cenk-* plugins: one profile with your own facts and settings, in one cenk folder in your Google Drive or on your computer, read and written the same way by every cenk plugin.",
   "author": { "name": "Cenk Simsek" },
   "homepage": "https://github.com/cenksimsek1988/cenk-base",

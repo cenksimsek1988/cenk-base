@@ -2,10 +2,25 @@
 
 Read first by every coordinator skill (the workbench's `coordinate-sessions`, cenk-jobs' `coordinate`); each skill adds its own domain part. The source is in the workbench; cenk-base carries a copy for the cenk-* plugins, made by the workbench's `scripts/sync-shared.sh`. Not a skill: nothing here starts on its own.
 
+## The coordinator only coordinates
+
+A coordinator does four things and nothing else:
+
+- briefs sessions and starts them;
+- relays plans, questions and the person's answers, quoted;
+- keeps the order of landings: checks that a commit's parent is the shared branch's tip, then fast-forwards;
+- keeps the records of what is open.
+
+Everything else goes to a session, the project's development session first: tests (the landing run included), builds, file edits, investigations (reading other sessions' transcripts to find a bug, grepping logs), reviews and every long command. Why: a busy coordinator misses messages, since delivery gives up after about 20 s, and its own work costs its whole context on every turn. Example: on 19 Nov 2026, an hour of page checks run for a peer made 8 messages from another session fail.
+
+- Landing: after its commit, the development session runs the full suite and the plugin check on that exact commit with a clean tree and reports the hash, the parent and the counts; the coordinator checks the parent and fast-forwards. Example: `1f37fd3, parent 9b6dbca: 467 passed, 0 failed, 2 skipped; check-plugin all PASS.`
+- Work a peer asks the coordinator for goes to a session the same way. Example: a peer asks for page checks: start a session for them.
+
 ## One coordinator
 
 - One coordinator per folder at any time: two that run together write the same records. Before taking over, list the sessions (`ListAgents` for running ones, `mcp__ccd_session_mgmt__list_sessions` for all); another running session with this coordinator's title stops you: say so.
 - A new coordinator starts only after the old one has written its hand-off and shows as archived (or stopped) in `mcp__ccd_session_mgmt__list_sessions`. Idle is not enough: an idle session still takes messages and acts on them.
+- A plugin's coordinator starts in the folder where its plugin is enabled. A brief for work in another folder names that folder and the plugins enabled there. Example: `Folder: the shop-api repository. Plugins there: cenk-workbench, codeguild.`
 - The app cannot link the old coordinator's sub-sessions to the new one. Its hand-off lists each one; ask the user, per hand-off, which way: reach each by message with its id (it keeps its chat and reports by message, since its turn-end notes still go to the old coordinator), or start each anew from its hand-off file as its own linked session and archive the old one (its chat is lost). Example: `3 sub-sessions of the old coordinator: reach them by message, or restart them linked here?`
 
 ## Names
@@ -16,10 +31,7 @@ Read first by every coordinator skill (the workbench's `coordinate-sessions`, ce
 
 ## Briefs and sessions
 
-- The coordinator never runs long work itself, so it stays free for messages: delivery gives up after about 20 s when a busy session does not answer. Example: on 19 Nov, an hour of page checks run for a peer made 8 messages from another session fail.
-- Every long piece goes to a fresh session with a brief: test suites, searches, workflows, analyses, review or verify rounds, and work a peer asks for. Example: a peer asks for page checks: start a session for them.
-- No long command runs in the coordinator, in the foreground or the background. Its own checks before landing go to a fresh session, which runs them on the exact commit and reports pass or fail with counts; the coordinator acts on that report. Example: `a1b2c3d: 467 passed, 0 failed, 2 skipped; check-plugin all PASS.`
-- The coordinator briefs, records the results, relays answers and decides with the person.
+- One session per piece, the project's development session first; a fresh session only when none fits.
 - A brief stands alone: the goal, the items by name and id, the files, the rules to read, and the hand-off the session ends with.
 - A session can be started only on a turn the person's own message started; on a turn another session's message or a trigger started, propose it as a card the person starts.
 - Idle is not done: a session shows idle while it waits on a background job or the person. Read its last turn before reminding it.
@@ -35,6 +47,8 @@ Read first by every coordinator skill (the workbench's `coordinate-sessions`, ce
 
 - `SendMessage` to the session's id. A message into an idle session is a full-context turn there: send only to sessions that act on it.
 - A sub-session reports each milestone in one line: plan approved, done, blocked (on what).
+- A session that sends the coordinator briefs runs in the coordinator's permission mode: the app holds a message from a session in a lower mode (auto) to one in a higher mode (bypass) until the person approves it there, and an approved one may still not arrive. Example: on 20 Nov 2026, 3 briefs from an auto-mode coordinator never arrived, even after approval over Remote Control; 69 from bypass-mode sessions all did.
+- A send that comes back undelivered or fails: read the receiver's transcript for the message, resend once, and if it is still missing ask the person to type it in that session, named with a link.
 - A message cannot run a slash command in another session: it arrives as text. After a plugin update, ask the person to type `/reload-plugins` here and in each open sub-session, named, with links. Example: `Type /reload-plugins here, in Development · cenk-jobs and in apply-acme.`
 - Lessons for a plugin go up, never into the plugin from where it runs: one message to the plugin's coordinator, which passes them to "Coordinator · workbench".
 

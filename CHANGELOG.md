@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2 (2026-11-20)
+
+- Coordinator rules: a new first section, "The coordinator only coordinates", and lines on permission mode and undelivered messages (`references/coordinator.md` synced from workbench 0.34.2).
+
 ## 0.2.1 (2026-11-19)
 
 - Coordinator rules: never run long work; pre-landing checks in a fresh session (`references/coordinator.md` synced from workbench 0.34.1).
