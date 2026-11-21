@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.4 (2026-11-21)
+
+- Coordinator rules: every brief ends with a fixed questions line (`references/coordinator.md` synced from workbench 0.34.4).
+
 ## 0.2.3 (2026-11-21)
 
 - Coordinator rules: each coordinator asks for its own sessions (`references/coordinator.md` synced from workbench 0.34.3).
