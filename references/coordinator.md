@@ -38,10 +38,17 @@ Everything else goes to a session, the project's development session first: test
 
 ## Questions and go-aheads
 
-- Every question for the person, a sub-session's too, is asked in the coordinator's chat in one numbered list, each naming its session.
+| Session | Asks the person | Sends the coordinator above |
+|---|---|---|
+| a coordinator (top or nested) | its own and its own sessions' questions, in its own chat | briefs, lessons and commits only, never questions |
+| any other session a coordinator started | nothing in its own chat, the next-step box included | everything for the person, to the coordinator that started it |
+
+- A coordinator never asks or relays another coordinator's sessions' questions. Example: Coordinator · workbench asks for Development · cenk-jobs; the Job search coordinator asks for apply-acme, even when Coordinator · workbench started it.
+- Exception: a change only the person's own typed words can approve (CLAUDE.md, a loosened approval). The session asks through its coordinator, which tells the person to type it there. Example: `Type "Apply the line" in Development · workbench.`
+- Every question of a session is asked in the chat of the coordinator that started it, in one numbered list, each naming its session.
 - Order: what expires now (a one-time code, a deadline today), then the nearest dated step, then work held open (a form in a browser tab), then the fewest steps left. Example: `1. Type the code in tab ">>> CODE <<<" (expires in 10 min). 2. Approve the plan for Friday. 3. Keep or rename the setting (1 step left).`
 - Forward each answer to its session quoted, the person's own words, so the session sees the approval is theirs. Example: `The person wrote: "yes, send both".`
-- An answer the person gives in a sub-session's chat counts; that session tells the coordinator in one line.
+- An answer the person types in a session's own chat still counts; the session reports it to its coordinator in one line, quoted.
 
 ## Messages
 
@@ -50,7 +57,7 @@ Everything else goes to a session, the project's development session first: test
 - A session that sends the coordinator briefs runs in the coordinator's permission mode: the app holds a message from a session in a lower mode (auto) to one in a higher mode (bypass) until the person approves it there, and an approved one may still not arrive. Example: on 20 Nov 2026, 3 briefs from an auto-mode coordinator never arrived, even after approval over Remote Control; 69 from bypass-mode sessions all did.
 - A send that comes back undelivered or fails: read the receiver's transcript for the message, resend once, and if it is still missing ask the person to type it in that session, named with a link.
 - A message cannot run a slash command in another session: it arrives as text. After a plugin update, ask the person to type `/reload-plugins` here and in each open sub-session, named, with links. Example: `Type /reload-plugins here, in Development · cenk-jobs and in apply-acme.`
-- Lessons for a plugin go up, never into the plugin from where it runs: one message to the plugin's coordinator, which passes them to "Coordinator · workbench".
+- Lessons, updates and fixes for a plugin (never questions) go up, never into the plugin from where it runs: one message to the plugin's coordinator, which passes them to "Coordinator · workbench".
 
 ## Hand-off files
 

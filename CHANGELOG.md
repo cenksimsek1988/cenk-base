@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3 (2026-11-21)
+
+- Coordinator rules: each coordinator asks for its own sessions (`references/coordinator.md` synced from workbench 0.34.3).
+
 ## 0.2.2 (2026-11-20)
 
 - Coordinator rules: a new first section, "The coordinator only coordinates", and lines on permission mode and undelivered messages (`references/coordinator.md` synced from workbench 0.34.2).
