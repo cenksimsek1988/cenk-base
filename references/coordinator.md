@@ -35,6 +35,7 @@ Everything else goes to a session, the project's development session first: test
 - A brief stands alone: the goal, the items by name and id, the files, the rules to read, and the hand-off the session ends with.
 - Every brief ends with the questions line, so the rule arrives in the session's first message, whether or not it reads its rules. Example: `Questions: send them with SendMessage to Coordinator · workbench (local_4cb5…) and end your turn; never ask in your chat or the next-step box.`
 - A session can be started only on a turn the person's own message started; on a turn another session's message or a trigger started, propose it as a card the person starts.
+- While the person drives the coordinator over Remote Control, `start_session` is refused, even for a session they asked for: offer a card they start from the desktop, or run a short piece in a subagent. Seen 23 Nov 2026.
 - Idle is not done: a session shows idle while it waits on a background job or the person. Read its last turn before reminding it.
 
 ## Questions and go-aheads

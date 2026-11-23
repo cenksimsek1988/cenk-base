@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.5 (2026-11-23)
+
+- Coordinator rules: while the person drives the coordinator over Remote Control, starting a session is refused; offer a desktop card or a subagent (`references/coordinator.md` synced from workbench 0.34.5).
+
 ## 0.2.4 (2026-11-21)
 
 - Coordinator rules: every brief ends with a fixed questions line (`references/coordinator.md` synced from workbench 0.34.4).
